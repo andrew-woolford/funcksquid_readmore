@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Funky Squid Labs Ltd. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd" extends="pagebuilder_base_form">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">pagebuilder_funkysquid_pagebuilderreadmore_form.pagebuilder_funkysquid_pagebuilderreadmore_form_data_source</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="label" xsi:type="string" translate="true">Read More/Less</item>
+    </argument>
+    <settings>
+        <dataScope>data</dataScope>
+        <namespace>pagebuilder_funkysquid_pagebuilderreadmore_form</namespace>
+        <deps>
+            <dep>pagebuilder_funkysquid_pagebuilderreadmore_form.pagebuilder_funkysquid_pagebuilderreadmore_form_data_source</dep>
+        </deps>
+        <buttons>
+            <button name="save" class="Magento\PageBuilder\Block\Adminhtml\ContentType\Edit\SaveButton"/>
+            <button name="close" class="Magento\PageBuilder\Block\Adminhtml\ContentType\Edit\ModalCloseButton"/>
+        </buttons>
+    </settings>
+    <dataSource name="pagebuilder_funkysquid_pagebuilderreadmore_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_PageBuilder/js/form/provider</item>
+            </item>
+        </argument>
+        <dataProvider name="pagebuilder_funkysquid_pagebuilderreadmore_form_data_source" class="Magento\PageBuilder\Model\ContentType\DataProvider">
+            <settings>
+                <requestFieldName/>
+                <primaryFieldName/>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="appearance_fieldset" sortOrder="10" component="Magento_PageBuilder/js/form/element/dependent-fieldset">
+        <settings>
+            <label translate="true">Appearance</label>
+            <additionalClasses>
+                <class name="admin__fieldset-visual-select-large">true</class>
+            </additionalClasses>
+            <collapsible>false</collapsible>
+            <opened>true</opened>
+            <imports>
+                <link name="hideFieldset">${$.name}.appearance:options</link>
+                <link name="hideLabel">${$.name}.appearance:options</link>
+            </imports>
+        </settings>
+        <field name="appearance" formElement="select" sortOrder="10" component="Magento_PageBuilder/js/form/element/dependent-visual-select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">default</item>
+                </item>
+            </argument>
+            <settings>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                    <class name="admin__field-visual-select-container">true</class>
+                </additionalClasses>
+                <dataType>text</dataType>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <elementTmpl>Magento_PageBuilder/form/element/visual-select</elementTmpl>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="AppearanceSourcePageBuilderReadMore"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+    <fieldset name="module_information" sortOrder="10">
+        <settings>
+            <label translate="true">Module details &amp; usage</label>
+            <collapsible>true</collapsible>
+            <opened>false</opened>
+        </settings>
+        <htmlContent name="information" sortOrder="21">
+            <settings>
+                <additionalClasses>
+                    <class name="html-content-class">true</class>
+                </additionalClasses>
+            </settings>
+            <block name="information_block" class="Magento\Backend\Block\Template">
+                <arguments>
+                    <argument name="template" xsi:type="string">FunkySquid_PageBuilderReadMore::info.phtml</argument>
+                </arguments>
+            </block>
+        </htmlContent>
+    </fieldset>
+    <fieldset name="visible_content" sortOrder="20">
+        <settings>
+            <label translate="true">Visible content</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+        <field name="visible_content" sortOrder="10" formElement="wysiwyg">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">page</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="pagebuilder_button" xsi:type="boolean">false</item>
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                        <item name="toggle_button" xsi:type="boolean">false</item>
+                        <item name="height" xsi:type="string">350px</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Content</label>
+                <dataScope>visible_content</dataScope>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+<!--        <field name="button_text_show" sortOrder="20" formElement="input">-->
+<!--            <settings>-->
+<!--                <label translate="true">Visible Content Link Text</label>-->
+<!--                <notice translate="true">This is the text link which displays before the hidden text is in view.</notice>-->
+<!--                <validation>-->
+<!--                    <rule name="validate-string" xsi:type="boolean">true</rule>-->
+<!--                </validation>-->
+<!--            </settings>-->
+<!--        </field>-->
+    </fieldset>
+    <fieldset name="hidden_content" sortOrder="30">
+        <settings>
+            <label translate="true">Hidden content</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+        <field name="description" sortOrder="10" formElement="wysiwyg">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">page</item>
+                    <item name="wysiwygConfigData" xsi:type="array">
+                        <item name="pagebuilder_button" xsi:type="boolean">false</item>
+                        <item name="is_pagebuilder_enabled" xsi:type="boolean">false</item>
+                        <item name="toggle_button" xsi:type="boolean">false</item>
+                        <item name="height" xsi:type="string">350px</item>
+                    </item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Content</label>
+                <dataScope>hidden_content</dataScope>
+            </settings>
+            <formElements>
+                <wysiwyg>
+                    <settings>
+                        <wysiwyg>true</wysiwyg>
+                    </settings>
+                </wysiwyg>
+            </formElements>
+        </field>
+    </fieldset>
+    <fieldset name="buttons" sortOrder="40">
+        <settings>
+            <label translate="true">Show/Hide link</label>
+            <collapsible>true</collapsible>
+            <opened>true</opened>
+        </settings>
+        <field name="button_text_show" sortOrder="10" formElement="input">
+            <settings>
+                <label translate="true">Visible Content Link Text</label>
+                <notice translate="true">This is the text link which displays before the hidden text is in view.</notice>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="button_text_hide" sortOrder="20" formElement="input">
+            <settings>
+                <label translate="true">Hidden Content Link Text</label>
+                <notice translate="true">This is the text link which displays after the hidden text is in view.</notice>
+                <validation>
+                    <rule name="validate-string" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="buttons" sortOrder="30" formElement="select" component="Magento_PageBuilder/js/form/element/visual-select">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="default" xsi:type="string">1</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true">Button type</label>
+                <elementTmpl>Magento_PageBuilder/form/element/visual-select</elementTmpl>
+            </settings>
+            <formElements>
+                <select>
+                    <settings>
+                        <options class="ButtonTypeSource"/>
+                    </settings>
+                </select>
+            </formElements>
+        </field>
+    </fieldset>
+</form>

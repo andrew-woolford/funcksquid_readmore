@@ -1,0 +1,35 @@
+// -------------------------------------------------------
+// Copyright © Funky Squid Labs Ltd. All rights reserved.
+// See COPYING.txt for license details.
+// -------------------------------------------------------
+
+//
+//  Default appearance styles.
+//  _____________________________________________
+// Required when using a custom SVG icon for your content type in the Page Builder panel
+.icon-pagebuilderreadmore {
+  content: url('@{baseDir}FunkySquid_PageBuilderReadMore/css/images/content-type/funkysquid-pagebuilderreadmore/appearance/icon-pagebuilderreadmore.svg');
+  width: 16px;
+  height: 16px;
+  margin-bottom: -2px;
+  margin-left: 1px;
+}
+
+// Admin styles
+.pagebuilder-content-type {
+  &.read-more-less {
+    border: 1px solid #e8e8e8;
+    .placeholder-readmore-text {
+      padding: 20px 20px 10px;
+    }
+    .placeholder-readmore-empty {
+      position: relative;
+      display: flex;
+      height: 60px;
+      align-items: center;
+      justify-content: center;
+      background-color: #fafafa;
+      color: #aaa6a0;
+    }
+  }
+}

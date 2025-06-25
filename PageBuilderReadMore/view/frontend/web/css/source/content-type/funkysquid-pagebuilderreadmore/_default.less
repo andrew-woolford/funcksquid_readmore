@@ -1,0 +1,53 @@
+//
+//  Default appearance styles.
+//  _____________________________________________
+
+& when (@media-common = true) {
+  .cms-index-index {
+    [data-content-type=row] {
+      [data-content-type='funkysquid_pagebuilderreadmore'] {
+        h1, h2, h3, h4, h5, h6 {
+          text-align: left;
+          padding: 0;
+        }
+      }
+    }
+  }
+  [data-content-type='funkysquid_pagebuilderreadmore'] {
+    .read-more-wrap {
+      .hidden_content {
+        display: none;
+      }
+      .read-more-trigger {
+        font-size: 16px;
+        font-weight: 600;
+        [data-element="link_text_show"] {
+          display: block;
+        }
+        [data-element="link_text_hide"] {
+          display: none;
+        }
+        [data-element="link_text_show"],
+        [data-element="link_text_hide"] {
+          &:hover {
+            text-decoration: underline;
+            cursor: pointer;
+          }
+        }
+      }
+      &.active {
+        .hidden_content {
+          display: block;
+        }
+        .read-more-trigger {
+          [data-element="link_text_show"] {
+            display: none;
+          }
+          [data-element="link_text_hide"] {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<!--
+/**
+ * Copyright © Funky Squid Labs Ltd. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div attr="data.main.attributes" ko-style="data.main.style" css="data.main.css" class="read-more-container">
+    <div class="read-more-wrap ">
+        <div data-content="true" class="visible_content">
+            <div attr="data.visible_content.attributes" ko-style="data.main.style" css="data.main.css" html="data.visible_content.html"></div>
+        </div>
+        <div data-content="true" class="hidden_content read-more-target">
+            <div attr="data.hidden_content.attributes" ko-style="data.main.style" css="data.main.css" html="data.hidden_content.html"></div>
+        </div>
+        <div class="button-container">
+            <span for="read-more" data-bind="attr: {'class': 'read-more-trigger '+ getOrderClass(data.main)}">
+                <span attr="data.link_text_show.attributes" html="data.link_text_show.html"></span>
+                <span attr="data.link_text_hide.attributes" html="data.link_text_hide.html"></span>
+            </span>
+        </div>
+    </div>
+</div>
